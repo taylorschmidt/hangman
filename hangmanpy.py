@@ -3,10 +3,8 @@ class Word():
         self.chosen_word = chosen_word
         self.game_list = []
         print(chosen_word)
-        current = '_ ' * len(chosen_word)
+        current = '-' * len(chosen_word)
         print(current)
-        # initialize game list
-        # game_list = []
         # loop through chosen word
         for char in chosen_word:
             # for each character, create a dictionary with the letter and false guess
@@ -17,32 +15,34 @@ class Word():
         print(self.game_list)
         self.start_game()
 
-    # def print_word():
-        
-    # def check_letter():
-
     def start_game(self):
-        guess = input("Guess a letter: ").lower()
-        print(guess)
+        self.guess = input("Guess a letter: ").lower()
+        print(self.guess)
         # loop through the game list
-        for item in self.game_list:
-            for key, value in item.items():
-                print(key, value)
-                if guess == value:
-                    print(value)
-                    # change false to true
-                    # update status
-                    # check win
-                    # show status
-                    # prompt start_game if no win
-                else:
-                    print("Incorrect!")
-       
-        # for key in self.game_list:
-        #     if guess == key.key.char:
-        #         print(key.key.char)
-        #     else:
-        #         print("Not in that word.")
+        for dic in self.game_list:
+            if dic['char'] == self.guess:
+                dic['guessed'] = True
+                print(self.game_list)
+                # call update status function
+            elif dic['char'] != self.guess:
+                continue
+            self.update_status()
+
+    def update_status(self):
+        print("updating status funcion")
+        # loop through the game list
+        for dic in self.game_list:
+            if dic['guessed'] == True:
+                print('This letter was guessed!')
+                guessed_letter = dic['char']
+                print('guessed letter', guessed_letter)
+            if dic['guessed'] == False:
+                continue
+                # the char at that dic
+                # 
+            self.start_game()
+        # if guessed is false, print a '-' at that location
+        # if guessed is true, print the letter at that location
 
     # def get_word():
 
