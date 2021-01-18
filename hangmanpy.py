@@ -16,12 +16,18 @@ class Word():
         self.start_game()
 
     def game_status(self):
+        #initiate the game status
         status = ""
+        #loop through the dictionaries in the game list
         for dic in self.game_list:
+            #if the dictionary letter has been guessed
             if dic['guessed'] == True:
+                #add the character to status
                 status += dic['char']
             else:
+                #else just add in a dash
                 status += "-"
+        # print the status
         print(status) 
 
 
