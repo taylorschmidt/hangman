@@ -35,7 +35,16 @@ class Word():
                 print(self.game_list)
             elif dic['char'] != self.guess:
                 continue
-            self.game_status()
+        self.game_status()
+        self.check_end()
+
+    def check_end(self):
+        for dic in self.game_list:
+            if dic['guessed'] == False:
+                return False
+            return True
+        print("Checked for end game.")
+
 
         # if guessed is false, print a '-' at that location
         # if guessed is true, print the letter at that location
