@@ -15,6 +15,16 @@ class Word():
         print(self.game_list)
         self.start_game()
 
+    def game_status(self):
+        status = ""
+        for dic in self.game_list:
+            if dic['guessed'] == True:
+                status += dic['char']
+            else:
+                status += "-"
+        print(status) 
+
+
     def start_game(self):
         self.guess = input("Guess a letter: ").lower()
         print(self.guess)
@@ -23,24 +33,10 @@ class Word():
             if dic['char'] == self.guess:
                 dic['guessed'] = True
                 print(self.game_list)
-                # call update status function
             elif dic['char'] != self.guess:
                 continue
-            self.update_status()
+            self.game_status()
 
-    def update_status(self):
-        print("updating status funcion")
-        # loop through the game list
-        for dic in self.game_list:
-            if dic['guessed'] == True:
-                print('This letter was guessed!')
-                guessed_letter = dic['char']
-                print('guessed letter', guessed_letter)
-            if dic['guessed'] == False:
-                continue
-                # the char at that dic
-                # 
-            self.start_game()
         # if guessed is false, print a '-' at that location
         # if guessed is true, print the letter at that location
 
